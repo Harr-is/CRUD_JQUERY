@@ -56,3 +56,17 @@ function loadRecipies() {
       },
     });
   }
+  function handleUpdate() {
+    var btn = $(this);
+    var parentDiv = btn.closest(".recipe");
+    let id = parentDiv.attr("data-id");
+    $.get(
+      "https://usman-fake-api.herokuapp.com/api/recipes/" + id,
+      function (response) {
+        $("#updateId").val(response._id);
+        $("#updateTitle").val(response.title);
+        $("#updateBody").val(response.body);
+        $("#updateModal").modal("show");
+      }
+    );
+  }
