@@ -42,3 +42,17 @@ function loadRecipies() {
       },
     });
   }
+
+  function handleDelete() {
+    var btn = $(this);
+    var parentDiv = btn.closest(".recipe");
+    let id = parentDiv.attr("data-id");
+    console.log(id);
+    $.ajax({
+      url: "https://usman-fake-api.herokuapp.com/api/recipes/" + id,
+      method: "DELETE",
+      success: function () {
+        loadRecipies();
+      },
+    });
+  }
